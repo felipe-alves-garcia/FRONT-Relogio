@@ -2,8 +2,10 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import './App.css';
 
 import Home from "./components/Home";
+import Relogio from "./components/Relogio";
 
 function App() {
+
   return (
     <>
       <header className="container-fluid p-4 bg-dark d-flex">
@@ -13,6 +15,7 @@ function App() {
       <BrowserRouter>
           <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/relogio" element={<Relogio/>}/>
               <Route path="*" element={<Home />} />
           </Routes>
       </BrowserRouter>    
