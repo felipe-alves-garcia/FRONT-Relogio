@@ -3,22 +3,28 @@ import './App.css';
 
 import Home from "./components/Home";
 import Relogio from "./components/Relogio";
+import Relogios from "./components/Relogios"
+
+import logo1 from "./assets/img/logo1.png"
 
 function App() {
 
   return (
     <>
-      <header className="container-fluid p-4 bg-dark d-flex">
-          <i className="bi bi-server text-white me-3 ms-4"></i>
-          <h1 className="fw-bold fs-5 m-0 text-white">PAROBÉ - Relógio Ponto</h1>
+      <header className="bg1 container-fluid p-4 d-flex mb-5">
+          <a href="/">
+            <img src={logo1} id="logo" alt="Parobé RS"/>
+          </a>
       </header>
       <BrowserRouter>
           <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/relogio" element={<Relogio/>}/>
+              <Route path="/relogios" element={<Relogios/>}/>
               <Route path="*" element={<Home />} />
           </Routes>
-      </BrowserRouter>    
+      </BrowserRouter>  
+      <h1>oi</h1>  
     </>
   );
 }
