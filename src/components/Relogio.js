@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 //import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -16,20 +16,38 @@ function Relogio (){
     const [port, setPort] = useState(null);
 
 
-    async function baixarAFD (e){
+    async function funBaixarAFD (e){
         e.preventDefault();
         console.log("User: "+user+"\nPassword: "+password+"\nIP: "+ip+"\nPort: "+port)
-        axios.get(`http://localhost:7001/baixar-afd/${user}/${password}/${ip}/${port}`).then((resp) => {
+        await axios.get(`http://localhost:7001/baixar-afd/${user}/${password}/${ip}/${port}`).then((resp) => {
             console.log(resp);
+            baixarAfd(resp.data);   
         }).catch((error) => {
             console.log(error);
         })
     }
 
+    function baixarAfd(conteudo, nome = "AFD.txt") {
+        const blob = new Blob([conteudo], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+
+        const link = document.createElement('a');
+        link.style.display = 'none'; // invisível
+        link.href = url;
+        link.download = nome;
+
+        // simula clique e remove o link invisível
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        URL.revokeObjectURL(url);
+    }
+
     return(
         <>
             <main className="container px-0 pt-5">
-                <form onSubmit={baixarAFD}>
+                <form onSubmit={funBaixarAFD}>
                     <div className="row text-white">
                         <div className="col-sm-6 px-4 mt-3">
                             <label for="user" className="form-label ps-2 m-0">Usuário</label>

@@ -10,5 +10,5 @@
 }
 .a:hover{
   transform: scale(1.01);
-  opacity: 0.9;
+  background-color: darkslategray;
 }

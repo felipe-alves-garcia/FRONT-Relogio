@@ -12,7 +12,7 @@ function Home (){
                     <div className="col-6">
                         <a href="/relogio" className="a bg1 p-5 d-flex justify-content-center rounded-5 text-decoration-none">
                             <div className="text-white fs-4 d-flex">
-                                <i className="bi bi-clock-fill me-3"></i>
+                                <i className="bi bi-plus-circle me-3"></i>
                                 <h2 className="m-0 mt-1 fs-4">Novo Relógio Ponto</h2>
                             </div>
                         </a>
