@@ -20,7 +20,7 @@ function App() {
           <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/relogio" element={<Relogio/>}/>
-              <Route path="/relogios" element={<Relogios/>}/>
+              <Route path="/relogios/:user/:password/:ip/:port/:name" element={<Relogios/>}/>
               <Route path="*" element={<Home />} />
           </Routes>
       </BrowserRouter>  

@@ -2,6 +2,9 @@ import { useState } from "react";
 //import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+import load from "../assets/img/load.gif"
+import erro from "../assets/img/erro.png"
+
 function Relogio (){
 
     //---
@@ -15,16 +18,22 @@ function Relogio (){
     const [ip, setIp] = useState(null);
     const [port, setPort] = useState(null);
 
+    const [loadGif, setLoadGif] = useState("d-none");
+    const [erroImg, setErroImg] = useState("d-none");
 
     async function funBaixarAFD (e){
         e.preventDefault();
+        setLoadGif("mt-5");
+        setErroImg("d-none");
         console.log("User: "+user+"\nPassword: "+password+"\nIP: "+ip+"\nPort: "+port)
         await axios.get(`http://localhost:7001/baixar-afd/${user}/${password}/${ip}/${port}`).then((resp) => {
             console.log(resp);
             baixarAfd(resp.data);   
         }).catch((error) => {
             console.log(error);
+            setErroImg("mt-5");
         })
+        setLoadGif("d-none")
     }
 
     function baixarAfd(conteudo, nome = "AFD.txt") {
@@ -42,6 +51,7 @@ function Relogio (){
         document.body.removeChild(link);
 
         URL.revokeObjectURL(url);
+        console.log("Download")
     }
 
     return(
@@ -50,19 +60,19 @@ function Relogio (){
                 <form onSubmit={funBaixarAFD}>
                     <div className="row text-white">
                         <div className="col-sm-6 px-4 mt-3">
-                            <label for="user" className="form-label ps-2 m-0">Usuário</label>
+                            <label htmlFor="user" className="form-label ps-2 m-0">Usuário</label>
                             <input onChange={(e) => {setUser(e.target.value)}} id="user" type="text" name="user" className="w-100 form-control"/>
                         </div>
                         <div className="col-sm-6 px-4 mt-3">
-                            <label for="password" className="form-label ps-2 m-0">Senha</label>
+                            <label htmlFor="password" className="form-label ps-2 m-0">Senha</label>
                             <input onChange={(e) => {setPassword(e.target.value)}} id="password" type="password" name="password" className="w-100 form-control"/>
                         </div>
                         <div className="col-sm-6 px-4 mt-3">
-                            <label for="ip" className="form-label ps-2 m-0">IP do Relógio</label>
+                            <label htmlFor="ip" className="form-label ps-2 m-0">IP do Relógio</label>
                             <input onChange={(e) => {setIp(e.target.value)}} id="ip" type="text" name="ip" className="w-100 form-control"/>
                         </div>
                         <div className="col-sm-6 px-4 mt-3">
-                            <label for="port" className="form-label ps-2 m-0">Porta do Relógio</label>
+                            <label htmlFor="port" className="form-label ps-2 m-0">Porta do Relógio</label>
                             <input onChange={(e) => {setPort(e.target.value)}} id="port" type="number" name="port" className="w-100 form-control"/>
                         </div>
                     </div>
@@ -72,6 +82,22 @@ function Relogio (){
                         </div>
                     </div>
                 </form>
+                <div className={`${loadGif} row`}>
+                    <div className="col-12 d-flex justify-content-center pt-5">
+                        <img id="load" src={load} alt="baixando..."></img>
+                    </div>
+                    <div className="col-12 d-flex justify-content-center text-white fs-6">
+                        <p>Baixando...</p>
+                    </div>
+                </div>
+                <div className={`${erroImg} row`}>
+                    <div className="col-12 d-flex justify-content-center pt-5">
+                        <img id="load" src={erro} alt="Erro, tente novamente"></img>
+                    </div>
+                    <div className="col-12 d-flex justify-content-center text-danger fs-6">
+                        <p>Tente Novamente</p>
+                    </div>
+                </div>
             </main>
         </>
     );
