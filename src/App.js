@@ -2,7 +2,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import './App.css';
 
 import Home from "./components/Home";
-import Relogio from "./components/Relogio";
+import Relogio from "./components/relogio";
 import Relogios from "./components/Relogios"
 
 import logo1 from "./assets/img/logo1.png"
