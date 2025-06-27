@@ -4,6 +4,7 @@ import './App.css';
 import Home from "./components/Home";
 import Relogio from "./components/relogio";
 import Relogios from "./components/Relogios"
+import Todos from "./components/Todos"
 
 import logo1 from "./assets/img/logo1.png"
 
@@ -21,10 +22,10 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/relogio" element={<Relogio/>}/>
               <Route path="/relogios/:user/:password/:ip/:port/:name" element={<Relogios/>}/>
+              <Route path="/geral" element={<Todos/>}/>
               <Route path="*" element={<Home />} />
           </Routes>
       </BrowserRouter>  
-      <h1>oi</h1>  
     </>
   );
 }

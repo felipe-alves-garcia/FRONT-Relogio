@@ -56,7 +56,7 @@ function Relogio (){
 
     return(
         <>
-            <main className="container px-0 pt-5">
+            <main className="container px-0 pt-md-5">
                 <form onSubmit={funBaixarAFD}>
                     <div className="row text-white">
                         <div className="col-sm-6 px-4 mt-3">

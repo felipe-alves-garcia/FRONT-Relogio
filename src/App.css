@@ -4,6 +4,12 @@
 .bg1{
   background-color: rgb(32, 32, 32);
 }
+.bg2{
+  background-color: rgb(96, 160, 0);
+}
+.bg3{
+  background-color: rgb(179, 0, 0);
+}
 .a{
   cursor:pointer;
   transition:200ms ease-in-out;
