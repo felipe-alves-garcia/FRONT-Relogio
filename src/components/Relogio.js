@@ -25,12 +25,12 @@ function Relogio (){
         e.preventDefault();
         setLoadGif("mt-5");
         setErroImg("d-none");
-        console.log("User: "+user+"\nPassword: "+password+"\nIP: "+ip+"\nPort: "+port)
-        await axios.get(`http://localhost:7001/baixar-afd/${user}/${password}/${ip}/${port}`).then((resp) => {
-            console.log(resp);
+        //console.log.log("User: "+user+"\nPassword: "+password+"\nIP: "+ip+"\nPort: "+port)
+        await axios.get(`http://10.10.112.53:7001/baixar-afd/${user}/${password}/${ip}/${port}`).then((resp) => {
+            //console.log.log(resp);
             baixarAfd(resp.data);   
         }).catch((error) => {
-            console.log(error);
+            //console.log.log(error);
             setErroImg("mt-5");
         })
         setLoadGif("d-none")
@@ -51,7 +51,7 @@ function Relogio (){
         document.body.removeChild(link);
 
         URL.revokeObjectURL(url);
-        console.log("Download")
+        //console.log.log("Download")
     }
 
     return(

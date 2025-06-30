@@ -17,8 +17,8 @@ function Todos (){
     const [ status, setStatus ] = useState([]);
 
     function listaRelogios (){
-        axios.get("http://localhost:7001/relogios").then((resp) => {
-            console.log(resp.data);
+        axios.get("http://10.10.112.53:7001/relogios").then((resp) => {
+            //console.log.log(resp.data);
             let statusBuild = [];
             for(let i=0; i<resp.data.length; i++){
                 statusBuild[i] = "bg1";
@@ -26,7 +26,7 @@ function Todos (){
             setStatus(statusBuild);
             setRelogios(resp.data);
         }).catch((error) => {
-            console.log(error);
+            //console.log.log(error);
             setErroImg("mt-5")
             setTimeout(() => {
                 navigate("/");
@@ -55,11 +55,11 @@ function Todos (){
         let statusBuild = [];
         /* eslint-disable no-loop-func */
         for(const item of relogios){
-            console.log("User: "+item.login+"\nPassword: "+item.password+"\nIP: "+item.ip+"\nPort: "+item.port)
+            //console.log.log("User: "+item.login+"\nPassword: "+item.password+"\nIP: "+item.ip+"\nPort: "+item.port)
             setLoadGif("mt-5");
             setErroImg("d-none");
-            await axios.get(`http://localhost:7001/baixar-afd/${item.login}/${item.password}/${item.ip}/${item.port}`).then((resp) => {
-                console.log(resp);
+            await axios.get(`http://10.10.112.53:7001/baixar-afd/${item.login}/${item.password}/${item.ip}/${item.port}`).then((resp) => {
+                //console.log.log(resp);
                 /* eslint-disable no-loop-func */
                 for(let n=i; n<status.length; n++){
                     if(n===i){
@@ -71,7 +71,7 @@ function Todos (){
                 }
                 baixarAfd(resp.data, item.name);   
             }).catch((error) => {
-                console.log(error);
+                //console.log.log(error);
                 /* eslint-disable no-loop-func */
                 for(let n=i; n<status.length; n++){
                     if(n===i){

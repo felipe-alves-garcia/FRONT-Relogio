@@ -12,11 +12,11 @@ function Relogios (){
     const [ relogios, setRelogios ] = useState([]);
 
     function listaRelogios (){
-        axios.get("http://localhost:7001/relogios").then((resp) => {
-            console.log(resp.data);
+        axios.get("http://10.10.112.53:7001/relogios").then((resp) => {
+            //console.log(resp.data);
             setRelogios(resp.data);
         }).catch((error) => {
-            console.log(error);
+            //console.log(error);
         })
     }
 
@@ -47,14 +47,14 @@ function Relogios (){
         const ip = ipRef.current.value;
         const port = portRef.current.value;*/
         if(user !== "0" && password !== "0" && ip !== "0" && port !== "0"){
-            console.log("User: "+user+"\nPassword: "+password+"\nIP: "+ip+"\nPort: "+port)
+            //console.log("User: "+user+"\nPassword: "+password+"\nIP: "+ip+"\nPort: "+port)
             setLoadGif("mt-5");
             setErroImg("d-none");
-            await axios.get(`http://localhost:7001/baixar-afd/${user}/${password}/${ip}/${port}`).then((resp) => {
-                console.log(resp);
+            await axios.get(`http://10.10.112.53:7001/baixar-afd/${user}/${password}/${ip}/${port}`).then((resp) => {
+                //console.log(resp);
                 baixarAfd(resp.data);   
             }).catch((error) => {
-                console.log(error);
+                //console.log(error);
                 setErroImg("mt-5");
             })    
             setLoadGif("d-none");
